@@ -55,7 +55,7 @@ export function SettingsForm({
           id="duration"
           type="number"
           value={duration}
-          onChange={(e) => onDurationChange(parseInt(e.target.value, 10))}
+          onChange={(e) => onDurationChange(Number.parseInt(e.target.value, 10))}
           min={1}
           max={60}
         />

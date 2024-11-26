@@ -19,7 +19,7 @@ export function LotteryWheel({ participants, duration, isSpinning, currentPrizeN
   const [winner, setWinner] = useState<string | null>(null);
   const [buttonColor, setButtonColor] = useState('bg-primary');
   const spinStartTime = useRef<number | null>(null);
-  const animationRef = useRef<number | null>(null);
+  const animationRef = useRef<NodeJS.Timeout | null>(null);
   const finalWinnerRef = useRef<string | null>(null);
   
   const [playDrumroll, { stop: stopDrumroll }] = useSound('/sounds/drumroll.mp3', { 
@@ -34,7 +34,7 @@ export function LotteryWheel({ participants, duration, isSpinning, currentPrizeN
   const calculateInterval = useCallback((elapsedTime: number) => {
     const minInterval = 50;
     const maxInterval = 1250;
-    const progress = Math.pow(elapsedTime / duration, 3);
+    const progress = (elapsedTime / duration) ** 3;
     return minInterval + (maxInterval - minInterval) * progress;
   }, [duration]);
 

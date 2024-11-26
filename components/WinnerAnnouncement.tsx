@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
-import confetti from 'canvas-confetti';
+import confetti, { type Shape } from 'canvas-confetti';
 
 interface WinnerAnnouncementProps {
   winner: string | null;
@@ -16,11 +15,11 @@ export function WinnerAnnouncement({ winner, currentPrizeName, onClose }: Winner
       const animationEnd = Date.now() + duration;
       const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 10001 };
 
-      function randomInRange(min: number, max: number) {
+      const randomInRange = (min: number, max: number) => {
         return Math.random() * (max - min) + min;
       }
 
-      const interval: NodeJS.Timeout = setInterval(function() {
+      const interval: NodeJS.Timeout = setInterval(() => {
         const timeLeft = animationEnd - Date.now();
 
         if (timeLeft <= 0) {
@@ -33,14 +32,14 @@ export function WinnerAnnouncement({ winner, currentPrizeName, onClose }: Winner
           particleCount, 
           origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
           colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'],
-          shapes: ['circle', 'square', 'star'],
+          shapes: ['circle', 'square', 'star'] as Shape[],
           scalar: randomInRange(1, 2)
         }));
         confetti(Object.assign({}, defaults, { 
           particleCount, 
           origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
           colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'],
-          shapes: ['circle', 'square', 'star'],
+          shapes: ['circle', 'square', 'star'] as Shape[],
           scalar: randomInRange(1, 2)
         }));
       }, 250);

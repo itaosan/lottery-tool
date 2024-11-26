@@ -8,7 +8,7 @@ export function parseParticipants(input: string): Participant[] {
     const [name, multiplier] = line.split(',');
     return {
       name: name.trim(),
-      multiplier: parseInt(multiplier?.trim() || '1', 10)
+      multiplier: Number.parseInt(multiplier?.trim() || '1', 10)
     };
   });
 }
