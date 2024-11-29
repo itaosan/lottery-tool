@@ -61,7 +61,6 @@ export default function Home() {
     setIsSpinning(true);
   }, []);
 
-
   const participantsListContent = (
     <div className="space-y-1">
       {parsedParticipants.map((participant, index) => (

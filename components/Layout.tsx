@@ -1,7 +1,7 @@
-import type React from 'react';
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { BackgroundEffect } from './BackgroundEffect';
+import type React from "react";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { BackgroundEffect } from "./BackgroundEffect";
 
 interface LayoutProps {
   title: string;
@@ -14,15 +14,15 @@ interface LayoutProps {
   isSpinning: boolean;
 }
 
-export function Layout({ 
-  title, 
+export function Layout({
+  title,
   currentPrizeName,
-  children, 
-  participantsList, 
-  participantsCount, 
-  winnersList, 
-  onOpenSettings, 
-  isSpinning 
+  children,
+  participantsList,
+  participantsCount,
+  winnersList,
+  onOpenSettings,
+  isSpinning,
 }: LayoutProps) {
   return (
     <div className="min-h-screen bg-background p-8 relative overflow-hidden">
@@ -32,7 +32,9 @@ export function Layout({
         {isSpinning ? (
           <div className="flex flex-col items-center justify-start h-[calc(100vh-8rem)]">
             {/* <h1 className="text-4xl font-bold text-center mb-4">{title}</h1> */} {/* Removed duplicated title */}
-            <div className="w-full max-w-3xl mt-8"> {/* Added mt-8 class */}
+            <div className="w-full max-w-3xl mt-8">
+              {" "}
+              {/* Added mt-8 class */}
               {children}
             </div>
           </div>
@@ -41,23 +43,14 @@ export function Layout({
             <div className="space-y-8">
               <Card className="p-8 relative">
                 <h2 className="text-3xl font-bold text-center">{currentPrizeName}</h2>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={onOpenSettings}
-                  className="absolute top-4 right-4"
-                >
+                <Button variant="outline" size="sm" onClick={onOpenSettings} className="absolute top-4 right-4">
                   設定
                 </Button>
               </Card>
-              <Card className="p-4">
-                {children}
-              </Card>
+              <Card className="p-4">{children}</Card>
               <Card className="p-4">
                 <h2 className="text-2xl font-bold mb-2">当選者一覧</h2>
-                <div className="h-[400px] overflow-y-auto pr-2">
-                  {winnersList}
-                </div>
+                <div className="h-[400px] overflow-y-auto pr-2">{winnersList}</div>
               </Card>
             </div>
             <Card className="flex flex-col">
@@ -68,9 +61,7 @@ export function Layout({
                     {participantsCount}人
                   </span>
                 </div>
-                <div className="h-full overflow-y-auto pr-2">
-                  {participantsList}
-                </div>
+                <div className="h-full overflow-y-auto pr-2">{participantsList}</div>
               </div>
             </Card>
           </div>
@@ -79,4 +70,3 @@ export function Layout({
     </div>
   );
 }
-

@@ -19,7 +19,7 @@ export function BackgroundEffect({ isActive }: BackgroundEffectProps) {
 
       return () => clearInterval(interval);
     }
-      setEffects([]);
+    setEffects([]);
   }, [isActive]);
 
   return (
